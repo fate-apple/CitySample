@@ -25,7 +25,7 @@ UMassTrafficValidationProcessor::UMassTrafficValidationProcessor()
 	ProcessingPhase = EMassProcessingPhase::FrameEnd;
 }
 
-void UMassTrafficValidationProcessor::ConfigureQueries()
+void UMassTrafficValidationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery_Conditional.AddRequirement<FMassTrafficSimulationLODFragment>(EMassFragmentAccess::ReadOnly);
 	EntityQuery_Conditional.AddRequirement<FMassActorFragment>(EMassFragmentAccess::ReadOnly);

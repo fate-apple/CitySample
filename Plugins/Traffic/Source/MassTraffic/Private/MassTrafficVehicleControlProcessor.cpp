@@ -116,7 +116,7 @@ UMassTrafficVehicleControlProcessor::UMassTrafficVehicleControlProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleSimulationLOD);
 }
 
-void UMassTrafficVehicleControlProcessor::ConfigureQueries()
+void UMassTrafficVehicleControlProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	SimpleVehicleControlEntityQuery_Conditional.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);
 	SimpleVehicleControlEntityQuery_Conditional.AddRequirement<FMassTrafficPIDVehicleControlFragment>(EMassFragmentAccess::None, EMassFragmentPresence::None);

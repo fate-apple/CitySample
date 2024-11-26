@@ -13,7 +13,7 @@ UMassTrafficInitTrafficVehicleSpeedProcessor::UMassTrafficInitTrafficVehicleSpee
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficInitTrafficVehicleSpeedProcessor::ConfigureQueries()
+void UMassTrafficInitTrafficVehicleSpeedProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassTrafficRandomFractionFragment>(EMassFragmentAccess::ReadOnly);
 	EntityQuery.AddRequirement<FMassTrafficObstacleAvoidanceFragment>(EMassFragmentAccess::ReadOnly);

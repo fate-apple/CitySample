@@ -18,7 +18,7 @@ UMassTrafficDamageRepairProcessor::UMassTrafficDamageRepairProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleVisualizationLOD);
 }
 
-void UMassTrafficDamageRepairProcessor::ConfigureQueries()
+void UMassTrafficDamageRepairProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	DamagedVehicleEntityQuery.AddTagRequirement<FMassVisibilityCulledByDistanceTag>(EMassFragmentPresence::None);
 

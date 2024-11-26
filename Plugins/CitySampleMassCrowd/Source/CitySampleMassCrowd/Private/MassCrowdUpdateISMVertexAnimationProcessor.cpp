@@ -18,9 +18,9 @@ UMassCrowdUpdateISMVertexAnimationProcessor::UMassCrowdUpdateISMVertexAnimationP
 	ExecutionOrder.ExecuteAfter.Add(UE::Mass::ProcessorGroupNames::Tasks);
 }
 
-void UMassCrowdUpdateISMVertexAnimationProcessor::ConfigureQueries()
+void UMassCrowdUpdateISMVertexAnimationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 
 	EntityQuery.AddRequirement<FCrowdAnimationFragment>(EMassFragmentAccess::ReadWrite);
 }

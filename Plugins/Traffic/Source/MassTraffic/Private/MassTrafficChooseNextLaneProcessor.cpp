@@ -39,7 +39,7 @@ UMassTrafficChooseNextLaneProcessor::UMassTrafficChooseNextLaneProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficLaneChangingProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficChooseNextLaneProcessor::ConfigureQueries()
+void UMassTrafficChooseNextLaneProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery_Conditional.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);
 	EntityQuery_Conditional.AddRequirement<FMassZoneGraphLaneLocationFragment>(EMassFragmentAccess::ReadOnly);

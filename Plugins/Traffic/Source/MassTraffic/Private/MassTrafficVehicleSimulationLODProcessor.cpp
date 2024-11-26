@@ -41,7 +41,7 @@ UMassTrafficVehicleSimulationLODProcessor::UMassTrafficVehicleSimulationLODProce
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleLODCollector);
 }
 
-void UMassTrafficVehicleSimulationLODProcessor::ConfigureQueries()
+void UMassTrafficVehicleSimulationLODProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::All);
 	EntityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);
@@ -70,13 +70,13 @@ void UMassTrafficVehicleSimulationLODProcessor::ConfigureQueries()
 	ProcessorRequirements.AddSubsystemRequirement<UMassLODSubsystem>(EMassFragmentAccess::ReadOnly);
 }
 
-void UMassTrafficVehicleSimulationLODProcessor::Initialize(UObject& InOwner)
+void UMassTrafficVehicleSimulationLODProcessor::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	LODCalculator.Initialize(BaseLODDistance, BufferHysteresisOnDistancePercentage / 100.0f, LODMaxCount, nullptr, DistanceToFrustum, DistanceToFrustumHysteresis, VisibleLODDistance);
 #if WITH_MASSTRAFFIC_DEBUG
-	LogOwner = UWorld::GetSubsystem<UMassTrafficSubsystem>(InOwner.GetWorld());
+	LogOwner = UWorld::GetSubsystem<UMassTrafficSubsystem>(Owner.GetWorld());
 #endif // WITH_MASSTRAFFIC_DEBUG
-	Super::Initialize(InOwner);
+	Super::InitializeInternal(Owner, EntityManager);
 }
 
 void UMassTrafficVehicleSimulationLODProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)

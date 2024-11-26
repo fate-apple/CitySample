@@ -46,7 +46,7 @@ UMassTrafficFindObstaclesProcessor::UMassTrafficFindObstaclesProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleSimulationLOD);
 }
 
-void UMassTrafficFindObstaclesProcessor::ConfigureQueries()
+void UMassTrafficFindObstaclesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	// Main query used to find obstacle entities
 	ObstacleEntityQuery.AddTagRequirement<FMassTrafficObstacleTag>(EMassFragmentPresence::All);

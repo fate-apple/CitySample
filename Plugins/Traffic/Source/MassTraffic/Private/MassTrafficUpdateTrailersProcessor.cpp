@@ -16,7 +16,7 @@ UMassTrafficUpdateTrailersProcessor::UMassTrafficUpdateTrailersProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleVisualization);
 }
 
-void UMassTrafficUpdateTrailersProcessor::ConfigureQueries()
+void UMassTrafficUpdateTrailersProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassTrafficConstrainedVehicleFragment>(EMassFragmentAccess::ReadOnly);
 	EntityQuery.AddRequirement<FMassTrafficVehiclePhysicsFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::Optional);

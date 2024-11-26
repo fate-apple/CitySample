@@ -32,7 +32,7 @@ UMassTrafficOverseerProcessor::UMassTrafficOverseerProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficFrameStartFieldOperationsProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficOverseerProcessor::ConfigureQueries()
+void UMassTrafficOverseerProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	RecyclableTrafficVehicleEntityQuery.AddTagRequirement<FMassTrafficRecyclableVehicleTag>(EMassFragmentPresence::All);
 	RecyclableTrafficVehicleEntityQuery.AddRequirement<FAgentRadiusFragment>(EMassFragmentAccess::ReadOnly);

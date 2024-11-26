@@ -16,17 +16,17 @@ UMassTrafficInitTrailersProcessor::UMassTrafficInitTrailersProcessor()
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficInitTrailersProcessor::ConfigureQueries()
+void UMassTrafficInitTrailersProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassTrafficConstrainedVehicleFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery.AddRequirement<FMassTrafficRandomFractionFragment>(EMassFragmentAccess::ReadWrite);
 }
 
-void UMassTrafficInitTrailersProcessor::Initialize(UObject& InOwner)
+void UMassTrafficInitTrailersProcessor::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(InOwner);
+	Super::InitializeInternal(Owner, EntityManager);
 
-	MassRepresentationSubsystem = UWorld::GetSubsystem<UMassRepresentationSubsystem>(InOwner.GetWorld());
+	MassRepresentationSubsystem = UWorld::GetSubsystem<UMassRepresentationSubsystem>(Owner.GetWorld());
 }
 
 void UMassTrafficInitTrailersProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)

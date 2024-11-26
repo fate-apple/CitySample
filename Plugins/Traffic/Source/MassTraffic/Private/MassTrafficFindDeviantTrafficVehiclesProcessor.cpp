@@ -35,7 +35,7 @@ UMassTrafficFindDeviantTrafficVehiclesProcessor::UMassTrafficFindDeviantTrafficV
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficUpdateVelocityProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficFindDeviantTrafficVehiclesProcessor::ConfigureQueries()
+void UMassTrafficFindDeviantTrafficVehiclesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	// High LOD physics vehicles which haven't been marked as deviant obstacles to check for deviation
 	NominalTrafficVehicleEntityQuery.AddTagRequirement<FMassTrafficObstacleTag>(EMassFragmentPresence::None);

@@ -25,7 +25,7 @@ UWorldAudioMassProcessor::UWorldAudioMassProcessor(const FObjectInitializer& Obj
 	ExecutionOrder.ExecuteAfter.Add(TEXT("Traffic")); 
 }
 
-void UWorldAudioMassProcessor::ConfigureQueries()
+void UWorldAudioMassProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	// temporary query to mark this processor as world accessing in terms of requirements and their thread-safety
 	DummyWorldAccessingQuery.RequireMutatingWorldAccess();

@@ -14,7 +14,7 @@ UMassTrafficInitIntersectionsProcessor::UMassTrafficInitIntersectionsProcessor()
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficInitIntersectionsProcessor::ConfigureQueries() 
+void UMassTrafficInitIntersectionsProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) 
 {
 	EntityQuery.AddRequirement<FMassTrafficIntersectionFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadWrite);

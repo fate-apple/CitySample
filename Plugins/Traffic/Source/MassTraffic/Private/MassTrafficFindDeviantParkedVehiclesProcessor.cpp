@@ -21,7 +21,7 @@ UMassTrafficFindDeviantParkedVehiclesProcessor::UMassTrafficFindDeviantParkedVeh
 	ExecutionOrder.ExecuteInGroup = UE::MassTraffic::ProcessorGroupNames::ParkedVehicleBehavior;
 }
 
-void UMassTrafficFindDeviantParkedVehiclesProcessor::ConfigureQueries()
+void UMassTrafficFindDeviantParkedVehiclesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	NominalParkedVehicleEntityQuery.AddTagRequirement<FMassTrafficParkedVehicleTag>(EMassFragmentPresence::All);
 	NominalParkedVehicleEntityQuery.AddTagRequirement<FMassTrafficDisturbedVehicleTag>(EMassFragmentPresence::None);

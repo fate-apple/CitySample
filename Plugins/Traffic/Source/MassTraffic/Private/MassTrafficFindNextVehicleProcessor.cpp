@@ -13,7 +13,7 @@ UMassTrafficFindNextVehicleProcessor::UMassTrafficFindNextVehicleProcessor()
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficFindNextVehicleProcessor::ConfigureQueries()
+void UMassTrafficFindNextVehicleProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassZoneGraphLaneLocationFragment>(EMassFragmentAccess::ReadOnly);
 	EntityQuery.AddRequirement<FMassTrafficNextVehicleFragment>(EMassFragmentAccess::ReadWrite);

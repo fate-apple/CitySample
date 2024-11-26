@@ -31,9 +31,9 @@ namespace UE::MassTraffic
 	extern MASSTRAFFIC_API int32 GTrafficTurnOffVisualization;
 }
 
-void UCitySampleDisplayEntitiesProcessor::Initialize(UObject& Owner)
+void UCitySampleDisplayEntitiesProcessor::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(Owner);
+	Super::InitializeInternal(Owner, EntityManager);
 	this->ProcessingPhase = EMassProcessingPhase::EndPhysics;
 
 	RepresentationSubsystem = UWorld::GetSubsystem<UMassRepresentationSubsystem>(Owner.GetWorld());
@@ -60,7 +60,7 @@ void ConditionallyAddRequirement(FMassFragmentRequirements& MassRequirements, co
 }
 
 
-void UCitySampleDisplayEntitiesProcessor::ConfigureQueries()
+void UCitySampleDisplayEntitiesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	for (FCitySampleDisplayEntitiesConfig& Config : DisplayConfigs)
 	{

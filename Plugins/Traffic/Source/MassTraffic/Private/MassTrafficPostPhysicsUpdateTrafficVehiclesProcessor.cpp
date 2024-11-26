@@ -27,7 +27,7 @@ UMassTrafficPostPhysicsUpdateTrafficVehiclesProcessor::UMassTrafficPostPhysicsUp
 	ExecutionOrder.ExecuteInGroup = UE::MassTraffic::ProcessorGroupNames::PostPhysicsUpdateTrafficVehicles;
 }
 
-void UMassTrafficPostPhysicsUpdateTrafficVehiclesProcessor::ConfigureQueries()
+void UMassTrafficPostPhysicsUpdateTrafficVehiclesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	PIDControlTrafficVehicleQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::All);
 	PIDControlTrafficVehicleQuery.AddRequirement<FMassTrafficPIDVehicleControlFragment>(EMassFragmentAccess::None, EMassFragmentPresence::All);

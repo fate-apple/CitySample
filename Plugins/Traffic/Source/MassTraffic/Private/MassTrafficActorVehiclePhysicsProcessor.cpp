@@ -19,7 +19,7 @@ UMassTrafficActorVehiclePhysicsProcessor::UMassTrafficActorVehiclePhysicsProcess
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficVehicleControlProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficActorVehiclePhysicsProcessor::ConfigureQueries()
+void UMassTrafficActorVehiclePhysicsProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	ChaosPhysicsVehiclesQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);
 	ChaosPhysicsVehiclesQuery.AddRequirement<FMassRepresentationFragment>(EMassFragmentAccess::ReadOnly);

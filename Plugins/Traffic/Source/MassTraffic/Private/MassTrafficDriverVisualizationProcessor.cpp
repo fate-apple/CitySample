@@ -28,7 +28,7 @@ UMassTrafficDriverVisualizationProcessor::UMassTrafficDriverVisualizationProcess
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::PostPhysicsUpdateTrafficVehicles);
 }
 
-void UMassTrafficDriverVisualizationProcessor::ConfigureQueries()
+void UMassTrafficDriverVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	// No need to call super as we do not use it's LOD calculation code at all.
 	EntityQuery_Conditional.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::All);
@@ -48,9 +48,9 @@ void UMassTrafficDriverVisualizationProcessor::ConfigureQueries()
 	EntityQuery_Conditional.SetChunkFilter(&FMassVisualizationChunkFragment::AreAnyEntitiesVisibleInChunk);
 }
 
-void UMassTrafficDriverVisualizationProcessor::Initialize(UObject& Owner)
+void UMassTrafficDriverVisualizationProcessor::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(Owner);
+	Super::InitializeInternal(Owner, EntityManager);
 
 	World = Owner.GetWorld();
 }

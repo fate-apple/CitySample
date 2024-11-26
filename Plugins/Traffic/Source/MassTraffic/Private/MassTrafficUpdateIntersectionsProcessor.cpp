@@ -456,7 +456,7 @@ UMassTrafficUpdateIntersectionsProcessor::UMassTrafficUpdateIntersectionsProcess
 	ExecutionOrder.ExecuteInGroup = UE::MassTraffic::ProcessorGroupNames::EndPhysicsIntersectionBehavior;
 }
 
-void UMassTrafficUpdateIntersectionsProcessor::ConfigureQueries()
+void UMassTrafficUpdateIntersectionsProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassTrafficIntersectionFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery.AddSubsystemRequirement<UZoneGraphSubsystem>(EMassFragmentAccess::ReadOnly);

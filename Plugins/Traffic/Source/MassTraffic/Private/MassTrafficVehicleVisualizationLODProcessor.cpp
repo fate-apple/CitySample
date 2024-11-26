@@ -35,17 +35,17 @@ UMassTrafficVehicleVisualizationLODProcessor::UMassTrafficVehicleVisualizationLO
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::VehicleLODCollector);
 }
 
-void UMassTrafficVehicleVisualizationLODProcessor::Initialize(UObject& InOwner)
+void UMassTrafficVehicleVisualizationLODProcessor::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
 #if WITH_MASSTRAFFIC_DEBUG
-	LogOwner = UWorld::GetSubsystem<UMassTrafficSubsystem>(InOwner.GetWorld());
+	LogOwner = UWorld::GetSubsystem<UMassTrafficSubsystem>(Owner.GetWorld());
 #endif // WITH_MASSTRAFFIC_DEBUG
-	Super::Initialize(InOwner);
+	Super::InitializeInternal(Owner, EntityManager);
 }
 
-void UMassTrafficVehicleVisualizationLODProcessor::ConfigureQueries()
+void UMassTrafficVehicleVisualizationLODProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 
 	CloseEntityQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);
 	CloseEntityQuery.AddTagRequirement<FMassTrafficParkedVehicleTag>(EMassFragmentPresence::Any);
@@ -156,9 +156,9 @@ UMassTrafficVehicleLODCollectorProcessor::UMassTrafficVehicleLODCollectorProcess
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::FrameStart);
 }
 
-void UMassTrafficVehicleLODCollectorProcessor::ConfigureQueries()
+void UMassTrafficVehicleLODCollectorProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 
 	EntityQuery_VisibleRangeAndOnLOD.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);
 	EntityQuery_VisibleRangeAndOnLOD.AddTagRequirement<FMassTrafficParkedVehicleTag>(EMassFragmentPresence::Any);

@@ -21,7 +21,7 @@ public:
 protected:
 
 	/** Configure the owned FMassEntityQuery instances to express processor's requirements */
-	virtual void ConfigureQueries() override;
+	virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
 
 	/**
 	 * Execution method for this processor

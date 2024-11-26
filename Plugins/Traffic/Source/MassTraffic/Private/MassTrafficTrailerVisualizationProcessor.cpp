@@ -25,9 +25,9 @@ UMassTrafficTrailerVisualizationProcessor::UMassTrafficTrailerVisualizationProce
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::TrailerBehavior);
 }
 
-void UMassTrafficTrailerVisualizationProcessor::ConfigureQueries()
+void UMassTrafficTrailerVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 	EntityQuery.AddTagRequirement<FMassTrafficVehicleTrailerTag>(EMassFragmentPresence::All);
 }
 
@@ -45,7 +45,7 @@ UMassTrafficTrailerUpdateCustomVisualizationProcessor::UMassTrafficTrailerUpdate
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficTrailerVisualizationProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficTrailerUpdateCustomVisualizationProcessor::ConfigureQueries()
+void UMassTrafficTrailerUpdateCustomVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddTagRequirement<FMassTrafficVehicleTrailerTag>(EMassFragmentPresence::All);
 

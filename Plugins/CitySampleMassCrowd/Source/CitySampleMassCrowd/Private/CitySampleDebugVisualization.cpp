@@ -28,7 +28,7 @@ UCitySampleDebugVisProcessor::UCitySampleDebugVisProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UE::Mass::ProcessorGroupNames::UpdateWorldFromMass);
 }
 
-void UCitySampleDebugVisProcessor::ConfigureQueries()
+void UCitySampleDebugVisProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassRepresentationLODFragment>(EMassFragmentAccess::ReadOnly);
 	EntityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);

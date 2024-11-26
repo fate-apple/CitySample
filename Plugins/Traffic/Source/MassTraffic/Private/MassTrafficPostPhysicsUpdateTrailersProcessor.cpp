@@ -22,7 +22,7 @@ UMassTrafficPostPhysicsUpdateTrailersProcessor::UMassTrafficPostPhysicsUpdateTra
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficPostPhysicsUpdateTrafficVehiclesProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficPostPhysicsUpdateTrailersProcessor::ConfigureQueries()
+void UMassTrafficPostPhysicsUpdateTrailersProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddTagRequirement<FMassTrafficVehicleTrailerTag>(EMassFragmentPresence::All);
 	EntityQuery.AddRequirement<FMassActorFragment>(EMassFragmentAccess::ReadWrite);

@@ -28,7 +28,7 @@ UMassTrafficInterpolationProcessor::UMassTrafficInterpolationProcessor(const FOb
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficLaneChangingProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficInterpolationProcessor::ConfigureQueries()
+void UMassTrafficInterpolationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	// the following are the common requirements for both both queries
 	EntityQueryNonOffLOD_Conditional.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);

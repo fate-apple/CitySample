@@ -13,7 +13,7 @@ UMassTrafficInitParkedVehiclesProcessor::UMassTrafficInitParkedVehiclesProcessor
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficInitParkedVehiclesProcessor::ConfigureQueries()
+void UMassTrafficInitParkedVehiclesProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery.AddRequirement<FMassRepresentationFragment>(EMassFragmentAccess::ReadWrite);

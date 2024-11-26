@@ -16,7 +16,7 @@ class MASSTRAFFIC_API UMassTrafficProcessorBase : public UMassProcessor
 
 public:
 	
-	virtual void Initialize(UObject& InOwner) override;
+	virtual void InitializeInternal(UObject&, const TSharedRef<FMassEntityManager>&) override;
 	
 protected:
 

@@ -29,14 +29,14 @@
 #include "Animation/AnimMontage.h"
 
 
-void UMassFragmentInitializer_Animation::ConfigureQueries()
+void UMassFragmentInitializer_Animation::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FCrowdAnimationFragment>(EMassFragmentAccess::ReadWrite);
 }
 
-void UMassFragmentInitializer_Animation::Initialize(UObject& Owner)
+void UMassFragmentInitializer_Animation::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(Owner);
+	Super::InitializeInternal(Owner, EntityManager);
 	World = Owner.GetWorld();
 }
 
@@ -370,7 +370,7 @@ void UMassProcessor_Animation::UpdateSkeletalAnimation(FMassEntityManager& Entit
 	}
 }
 
-void UMassProcessor_Animation::ConfigureQueries()
+void UMassProcessor_Animation::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	AnimationEntityQuery_Conditional.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadWrite);
 	AnimationEntityQuery_Conditional.AddRequirement<FMassRepresentationFragment>(EMassFragmentAccess::ReadOnly);
@@ -399,9 +399,9 @@ void UMassProcessor_Animation::ConfigureQueries()
 	MontageEntityQuery_Conditional.RequireMutatingWorldAccess();
 }
 
-void UMassProcessor_Animation::Initialize(UObject& Owner)
+void UMassProcessor_Animation::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(Owner);
+	Super::InitializeInternal(Owner, EntityManager);
 
 	World = Owner.GetWorld();
 	check(World);

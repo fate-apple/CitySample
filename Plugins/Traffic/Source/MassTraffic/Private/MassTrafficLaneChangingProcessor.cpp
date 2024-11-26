@@ -600,7 +600,7 @@ UMassTrafficLaneChangingProcessor::UMassTrafficLaneChangingProcessor()
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficOverseerProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficLaneChangingProcessor::ConfigureQueries() 
+void UMassTrafficLaneChangingProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) 
 {
 	StartNewLaneChangesEntityQuery_Conditional.AddTagRequirement<FMassTrafficParkedVehicleTag>(EMassFragmentPresence::None);
 	StartNewLaneChangesEntityQuery_Conditional.AddRequirement<FAgentRadiusFragment>(EMassFragmentAccess::ReadOnly);

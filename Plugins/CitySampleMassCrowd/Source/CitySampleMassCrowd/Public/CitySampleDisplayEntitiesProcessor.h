@@ -40,8 +40,8 @@ class CITYSAMPLEMASSCROWD_API UCitySampleDisplayEntitiesProcessor : public UMass
 	GENERATED_BODY()
 
 protected:
-	virtual void Initialize(UObject& Owner) override;
-	virtual void ConfigureQueries() override;
+	virtual void InitializeInternal(UObject&, const TSharedRef<FMassEntityManager>&) override;
+	virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
 	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
 	// @todo we do this only because UCitySampleDisplayEntitiesProcessor has a non-standard query setup. This should be 
 	// looked into, as in - this type of query setup should also be supported, since it affects dependency calculations now as well.

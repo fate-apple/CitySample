@@ -55,9 +55,9 @@ UMassTrafficLightVisualizationProcessor::UMassTrafficLightVisualizationProcessor
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficIntersectionVisualizationLODProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficLightVisualizationProcessor::ConfigureQueries()
+void UMassTrafficLightVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 	EntityQuery.AddRequirement<FMassTrafficIntersectionFragment>(EMassFragmentAccess::ReadOnly);
 }
 
@@ -71,7 +71,7 @@ UMassTrafficLightUpdateCustomVisualizationProcessor::UMassTrafficLightUpdateCust
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficLightVisualizationProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficLightUpdateCustomVisualizationProcessor::ConfigureQueries()
+void UMassTrafficLightUpdateCustomVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassTrafficIntersectionFragment>(EMassFragmentAccess::ReadOnly);
 
@@ -226,9 +226,9 @@ UMassTrafficIntersectionVisualizationLODProcessor::UMassTrafficIntersectionVisua
 	ExecutionOrder.ExecuteAfter.Add(UMassTrafficIntersectionLODCollectorProcessor::StaticClass()->GetFName());
 }
 
-void UMassTrafficIntersectionVisualizationLODProcessor::ConfigureQueries()
+void UMassTrafficIntersectionVisualizationLODProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 
 	CloseEntityQuery.AddTagRequirement<FMassTrafficIntersectionTag>(EMassFragmentPresence::All);
 	CloseEntityAdjustDistanceQuery.AddTagRequirement<FMassTrafficIntersectionTag>(EMassFragmentPresence::All);
@@ -248,9 +248,9 @@ UMassTrafficIntersectionLODCollectorProcessor::UMassTrafficIntersectionLODCollec
 	ExecutionOrder.ExecuteAfter.Add(UE::MassTraffic::ProcessorGroupNames::FrameStart);
 }
 
-void UMassTrafficIntersectionLODCollectorProcessor::ConfigureQueries()
+void UMassTrafficIntersectionLODCollectorProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::ConfigureQueries();
+	Super::ConfigureQueries(EntityManager);
 
 	EntityQuery_VisibleRangeAndOnLOD.AddTagRequirement<FMassTrafficIntersectionTag>(EMassFragmentPresence::All);
 	EntityQuery_VisibleRangeOnly.AddTagRequirement<FMassTrafficIntersectionTag>(EMassFragmentPresence::All);

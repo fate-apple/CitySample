@@ -19,7 +19,7 @@ class WORLDAUDIODATASYSTEM_API UWorldAudioMassProcessor : public UMassProcessor
 	UWorldAudioMassProcessor(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 
-	virtual void ConfigureQueries() override;
+	virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
 	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
 
 protected:

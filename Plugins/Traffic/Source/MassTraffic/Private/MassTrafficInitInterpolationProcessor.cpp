@@ -19,7 +19,7 @@ UMassTrafficInitInterpolationProcessor::UMassTrafficInitInterpolationProcessor()
 	bAutoRegisterWithProcessingPhases = false;
 }
 
-void UMassTrafficInitInterpolationProcessor::ConfigureQueries()
+void UMassTrafficInitInterpolationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FMassZoneGraphLaneLocationFragment>(EMassFragmentAccess::ReadOnly);
 
