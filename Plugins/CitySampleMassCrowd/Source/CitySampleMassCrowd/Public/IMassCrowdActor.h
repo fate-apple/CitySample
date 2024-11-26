@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 
 #include "MassCommonTypes.h"
+#include "MassEntityHandle.h"
 #include "UObject/Interface.h"
 
 #include "IMassCrowdActor.generated.h"

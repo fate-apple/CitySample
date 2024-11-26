@@ -1,9 +1,10 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "Anim/CitySampleAnimNode_RequestInertialization.h"
+#include "CitySample/Anim/CitySampleAnimNode_RequestInertialization.h"
 #include "Animation/AnimInstanceProxy.h"
 #include "Animation/AnimNode_Inertialization.h"
 #include "Animation/AnimNode_AssetPlayerBase.h"
+#include "Animation/AnimTrace.h"
 
 #define LOCTEXT_NAMESPACE "CitySampleAnimNode_RequestInertialization"
 

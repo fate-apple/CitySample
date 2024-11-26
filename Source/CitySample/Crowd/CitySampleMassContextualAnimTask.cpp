@@ -121,7 +121,7 @@ EStateTreeRunStatus FCitySampleMassContextualAnimTask::EnterState(FStateTreeExec
 				{
 					FMassMontageFragment MontageData;
 					MontageData.Request(AnimRequest);
-					MassContext.GetEntitySubsystemExecutionContext().Defer().PushCommand<FMassCommandAddFragmentInstances>(MassContext.GetEntity(), MontageData);
+					MassContext.GetMassEntityExecutionContext().Defer().PushCommand<FMassCommandAddFragmentInstances>(MassContext.GetEntity(), MontageData);
 				}
 			}
 		}

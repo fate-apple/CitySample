@@ -18,8 +18,8 @@ public:
 	UMassProcessor_CrowdVisualizationCustomData();
 
 protected:
-	virtual void ConfigureQueries() override;
-	virtual void Initialize(UObject& Owner) override;
+	virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
+	virtual void InitializeInternal(UObject&, const TSharedRef<FMassEntityManager>&) override;
 	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
 
 	void UpdateCrowdCustomData(FMassExecutionContext& Context);

@@ -22,6 +22,8 @@ class MASSTRAFFIC_API UMassTrafficTrailerSpawnDataGenerator : public UMassEntity
 public:
 
 	UMassTrafficTrailerSpawnDataGenerator();
+	
+	void InitializeQuery(const TSharedRef<FMassEntityManager>& EntityManager) const;
 
 	/** Generate "Count" number of SpawnPoints and return as a list of position
 	 * @param Count of point to generate

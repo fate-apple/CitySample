@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "MassEntityHandle.h"
 #include "MassEntityTypes.h"
 #include "MassStateTreeTypes.h"
 #include "MassContextualAnimTask.generated.h"

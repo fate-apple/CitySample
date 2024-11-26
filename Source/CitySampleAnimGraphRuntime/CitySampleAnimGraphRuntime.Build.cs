@@ -6,7 +6,7 @@ public class CitySampleAnimGraphRuntime : ModuleRules
 {
 	public CitySampleAnimGraphRuntime(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PrivatePCHHeaderFile = "CitySampleAnimGraphRuntime.h";
+		//PrivatePCHHeaderFile = "CitySampleAnimGraphRuntime.h";
 
 		PublicDependencyModuleNames.AddRange(
 			new string[] { 

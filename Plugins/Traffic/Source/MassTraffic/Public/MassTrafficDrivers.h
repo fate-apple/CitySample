@@ -3,6 +3,7 @@
 #pragma once
 
 #include "MassLODSubsystem.h"
+#include "MassEntityTypes.h"
 #include "MassRepresentationTypes.h"
 #include "Engine/DataTable.h"
 #include "AnimToTextureDataAsset.h"

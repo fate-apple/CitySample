@@ -4,6 +4,7 @@
 
 #include "CitySampleSensorGridShaders.h"
 #include "GlobalDistanceFieldParameters.h"
+#include "NiagaraCompileHashVisitor.h"
 #include "NiagaraComponent.h"
 #include "NiagaraGpuComputeDispatchInterface.h"
 #include "NiagaraRenderGraphUtils.h"

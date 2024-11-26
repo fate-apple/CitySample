@@ -3,6 +3,7 @@
 #include "CitySampleNiagaraFunctionLibrary.h"
 #include "Engine/Engine.h"
 #include "NiagaraComponent.h"
+#include "NiagaraDataInterfaceSkeletalMesh.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraSystem.h"
 #include "NiagaraWorldManager.h"

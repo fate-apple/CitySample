@@ -127,7 +127,7 @@ UCitySampleCrowdVisualizationFragmentInitializer::UCitySampleCrowdVisualizationF
 	Operation = EMassObservedOperation::Add;
 }
 
-void UCitySampleCrowdVisualizationFragmentInitializer::ConfigureQueries() 
+void UCitySampleCrowdVisualizationFragmentInitializer::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery.AddRequirement<FCitySampleCrowdVisualizationFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery.AddRequirement<FMassRepresentationFragment>(EMassFragmentAccess::ReadWrite);

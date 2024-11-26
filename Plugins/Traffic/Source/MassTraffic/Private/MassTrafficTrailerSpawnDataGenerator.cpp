@@ -13,9 +13,17 @@
 
 UMassTrafficTrailerSpawnDataGenerator::UMassTrafficTrailerSpawnDataGenerator()
 {
-	VehicleQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::All);
-	VehicleQuery.AddConstSharedRequirement<FMassTrafficConstrainedTrailerParameters>(EMassFragmentPresence::All);
-	VehicleQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::All); // Need at least 1 fragment access for valid query 
+}
+
+void UMassTrafficTrailerSpawnDataGenerator::InitializeQuery(const TSharedRef<FMassEntityManager>& EntityManager) const
+{
+	if (!VehicleQuery.IsInitialized())
+	{
+		VehicleQuery.Initialize(EntityManager);
+		VehicleQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::All);
+		VehicleQuery.AddConstSharedRequirement<FMassTrafficConstrainedTrailerParameters>(EMassFragmentPresence::All);
+		VehicleQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::All); // Need at least 1 fragment access for valid query 
+	}
 }
 
 void UMassTrafficTrailerSpawnDataGenerator::Generate(UObject& QueryOwner,
@@ -28,6 +36,9 @@ void UMassTrafficTrailerSpawnDataGenerator::Generate(UObject& QueryOwner,
 	UWorld* World = GetWorld();
 	check(World);
 	FMassEntityManager& EntityManager = UE::Mass::Utils::GetEntityManagerChecked(*World);
+	TSharedRef<FMassEntityManager> EntityManagerRef = TSharedRef<FMassEntityManager>(
+		const_cast<FMassEntityManager*>(&EntityManager));
+	InitializeQuery(EntityManagerRef);
 
 	// Prepare spawn data
 	TArray<FMassEntitySpawnDataGeneratorResult> Results;

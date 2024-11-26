@@ -1,8 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-#include "Anim/CitySampleAnimNode_CopyPoseRotations.h"
+#include "CitySample/Anim/CitySampleAnimNode_CopyPoseRotations.h"
 #include "Animation/AnimInstanceProxy.h"
 #include "ReferenceSkeleton.h"
 #include "Animation/AnimCurveUtils.h"
+#include "Animation/AnimTrace.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 

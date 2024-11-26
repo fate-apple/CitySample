@@ -64,6 +64,10 @@ void UCitySampleDisplayEntitiesProcessor::ConfigureQueries(const TSharedRef<FMas
 {
 	for (FCitySampleDisplayEntitiesConfig& Config : DisplayConfigs)
 	{
+		if (!Config.EntityQuery.IsInitialized())
+		{
+			Config.EntityQuery.Initialize(EntityManager);
+		}
 		if (Config.EntityQuery.GetFragmentRequirements().Num() == 0)
 		{
 			ConditionallyAddRequirement<FTransformFragment>(Config.EntityQuery,EMassFragmentAccess::ReadOnly);

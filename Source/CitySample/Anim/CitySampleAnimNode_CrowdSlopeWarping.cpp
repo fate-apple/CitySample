@@ -1,5 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-#include "Anim/CitySampleAnimNode_CrowdSlopeWarping.h"
+#include "CitySample/Anim/CitySampleAnimNode_CrowdSlopeWarping.h"
 
 #include "Animation/AnimInstanceProxy.h"
 #include "Engine/SkeletalMesh.h"

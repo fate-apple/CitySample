@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 
 #include "MassCommonTypes.h"
+#include "MassEntityHandle.h"
 
 #include "Game/CitySampleInteractorInterface.h"
 #include "UI/CitySampleControlsOverlayInterface.h"

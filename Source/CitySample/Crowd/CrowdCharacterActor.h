@@ -12,6 +12,7 @@
 
 #include "Character/CitySampleCharacter.h"
 #include "CrowdCharacterDefinition.h"
+#include "MassEntityHandle.h"
 
 #include "CrowdCharacterActor.generated.h"
 

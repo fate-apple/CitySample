@@ -66,7 +66,12 @@ void UMassTrafficSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 		RebuildLaneData();
 	});
 #endif
-
+	
+	TrafficVehicleEntityQuery.Initialize(EntityManager.ToSharedRef());
+	ParkedVehicleEntityQuery.Initialize(EntityManager.ToSharedRef());
+	ObstacleEntityQuery.Initialize(EntityManager.ToSharedRef());
+	PlayerVehicleEntityQuery.Initialize(EntityManager.ToSharedRef());
+	
 	// Cache the traffic vehicle entity query
 	TrafficVehicleEntityQuery.Clear();
 	TrafficVehicleEntityQuery.AddTagRequirement<FMassTrafficVehicleTag>(EMassFragmentPresence::Any);

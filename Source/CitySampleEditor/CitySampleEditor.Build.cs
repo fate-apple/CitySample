@@ -6,7 +6,7 @@ public class CitySampleEditor : ModuleRules
 {
 	public CitySampleEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PrivatePCHHeaderFile = "CitySampleEditor.h";
+		//PrivatePCHHeaderFile = "CitySampleEditor.h";
 
 		PrivateIncludePathModuleNames.AddRange(
 			new string[] {

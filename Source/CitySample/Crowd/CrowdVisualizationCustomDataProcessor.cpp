@@ -34,7 +34,7 @@ UMassProcessor_CrowdVisualizationCustomData::UMassProcessor_CrowdVisualizationCu
 	bRequiresGameThreadExecution = true; // due to read-write access to FMassRepresentationSubsystemSharedFragment
 }
 
-void UMassProcessor_CrowdVisualizationCustomData::ConfigureQueries()
+void UMassProcessor_CrowdVisualizationCustomData::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
 {
 	EntityQuery_Conditional.AddRequirement<FCrowdAnimationFragment>(EMassFragmentAccess::ReadWrite);
 	EntityQuery_Conditional.AddRequirement<FCitySampleCrowdVisualizationFragment>(EMassFragmentAccess::ReadOnly);
@@ -55,9 +55,9 @@ void UMassProcessor_CrowdVisualizationCustomData::Execute(FMassEntityManager& En
 		});
 }
 
-void UMassProcessor_CrowdVisualizationCustomData::Initialize(UObject& Owner)
+void UMassProcessor_CrowdVisualizationCustomData::InitializeInternal(UObject& Owner, const TSharedRef<FMassEntityManager>& EntityManager)
 {
-	Super::Initialize(Owner);
+	Super::InitializeInternal(Owner, EntityManager);
 	World = Owner.GetWorld();
 	check(World);
 	LODSubsystem = UWorld::GetSubsystem<UMassLODSubsystem>(World);
